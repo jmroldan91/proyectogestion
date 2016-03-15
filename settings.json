@@ -1,0 +1,16 @@
+{
+    "app" : "Gestion",
+    "version" : "1.0 alfa",
+    "_HOSTNAME" : "", 
+    "_DATABASE" : "", 
+    "_DBUSER" : "", 
+    "_DBPASS" : "",
+    "_NRPP" : "10",
+    "_SEED" : "PfsaQW2312ADSFP342P",
+    "_MAILFROM" : "@gmail.com",
+    "_MAILALIAS" : "",
+    "_ROOT" : "", 
+    "tableColums" : [],
+    "tablePks" : [],
+    "modules" : []
+}

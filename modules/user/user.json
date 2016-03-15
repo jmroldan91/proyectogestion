@@ -1,0 +1,27 @@
+{
+    "module" : "user",
+    "tableColums" : [
+                        {"user" :       {
+                                            "0" : "id",
+                                            "1" : "login",
+                                            "2" : "pass",
+                                            "3" : "firstName",
+                                            "4" : "lastName",
+                                            "5" : "email",
+                                            "6" : "appRole",
+                                            "7" : "disabled"
+                                        }
+                        },
+                        {"accessLog" :   {
+                                            "0" : "id",
+                                            "1" : "login",
+                                            "2" : "accessTime",
+                                            "3" : "accessType"
+                                        }
+                        }
+                    ],
+    "tablePks" :    [
+                        {"user" : "id"},
+                        {"accessLog" : "id"}
+                    ]    
+}

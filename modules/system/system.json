@@ -1,0 +1,43 @@
+{
+    "module" : "system",
+    "tableColums" : [
+                        {"company" :       {
+                                            "0" : "tradeName",
+                                            "1" : "CIF",
+                                            "2" : "address",
+                                            "3" : "city",
+                                            "4" : "region",
+                                            "5" : "country",
+                                            "6" : "phone",
+                                            "7" : "fax",
+                                            "8" : "mobile",
+                                            "9" : "email",
+                                            "10" : "logoUrl"
+                                        }
+                        },
+                        {"modules" :   {
+                                            "0" : "id",
+                                            "1" : "modName",
+                                            "2" : "active"
+                                        }
+                        },
+                        {"menus" :   {
+                                            "0" : "idModule",
+                                            "1" : "idMenu",
+                                            "2" : "menuName",
+                                            "3" : "pos"
+                                        }
+                        },
+                        {"roles" :   {
+                                            "0" : "id",
+                                            "1" : "rolName"
+                                        }
+                        }
+                    ],
+    "tablePks" :    [
+                        {"company" : "CIF"},
+                        {"modules" : "id"},
+                        {"menus" : "idModule,idMenu"},
+                        {"roles" : "id"}
+                    ]    
+}

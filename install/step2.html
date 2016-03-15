@@ -1,0 +1,24 @@
+<div class="panel-heading">
+    <h1>Paso 2: <small>Datos del administrador</small></h1>
+</div>
+<div class="panel-body">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <h3 class="text-success">Datos del administrador</h3>
+        <form class="form form-horizontal" name="adminForm" action="#">
+            <label for="firstName">Nombre: </label>
+            <input id="firstName" type="text" ng-model="ctrlInstall.admin.firstName" class="form-control" required>
+            <label for="lastName">Apellidos:</label>
+            <input id="lastName" type="text" ng-model="ctrlInstall.admin.lastName" class="form-control" required>
+            <label for="email">Email</label>
+            <input id="email" type="email" ng-model="ctrlInstall.admin.email" class="form-control" required>                        
+            <label for="login">Usuario:</label>
+            <input id="login" type="text" ng-model="ctrlInstall.admin.login" class="form-control" required>
+            <label for="pass">Contraseña: </label>
+            <input id="pass" type="password" ng-model="ctrlInstall.admin.pass" class="form-control" required>                            
+        </form>
+    </div>                   
+</div>
+<div class="panel-footer">
+    <button class="btn btn-warning" ui-sref="step1">Volver</button>
+    <button class="btn btn-primary" ui-sref="step3" ng-disabled="adminForm.$valid === false">Siguiente</button>
+</div>

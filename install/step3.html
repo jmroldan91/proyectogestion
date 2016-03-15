@@ -1,0 +1,29 @@
+<div class="panel-heading">
+    <h1>Paso 3: <small>Resumen y confirmación</small></h1>
+</div>
+<div class="panel-body">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="col-lg-6 col-md-6 col-xs-12">
+            <h3 class="text-success">Datos de conexión</h3>
+            <p><b>Servidor: </b>{{ctrlInstall.conn.server}}</p>
+            <p><b>Base de datos: </b>{{ctrlInstall.conn.db}}</p>
+            <p><b>Usuario: </b>{{ctrlInstall.conn.user}}</p>
+            <p><b>Contraseña:</b>{{ctrlInstall.conn.pass}}</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-xs-12">
+            <h3 class="text-success">Administrador</h3>
+            <p><b>Nombre: </b>{{ctrlInstall.admin.firstName}}</p>
+            <p><b>Apellidos: </b>{{ctrlInstall.admin.lastName}}</p>
+            <p><b>Email: </b>{{ctrlInstall.admin.email}}</p>
+            <p><b>Alias: </b>{{ctrlInstall.admin.login}}</p>
+            <p><b>Contraseña: </b>{{ctrlInstall.admin.pass}}</p>
+        </div>
+        <div ng-show="ctrlInstall.installing===true" class="alert alert-info">Instalando: {{ctrlInstall.prog}}</div>
+        <div>{{ctrlInstall.console}}</div>
+    </div>                   
+</div>
+<div class="panel-footer">
+    <button class="btn btn-primary" ui-sref="step2">Cambiar</button>
+    <button class="btn btn-success" ng-click="ctrlInstall.install()" ng-disabled="ctrlInstall.installing===true">Terminar</button>
+</div>
+

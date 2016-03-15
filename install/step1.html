@@ -1,0 +1,22 @@
+<div class="panel-heading">
+    <h1>Paso 1: <small>Datos de conexión</small></h1>
+</div>
+<div class="panel-body">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <h3 class="text-success">Conexión a la base de datos</h3>
+        <form class="form form-horizontal" name="connForm" action="#">
+            <label for="server">Servidor: </label>
+            <input id="server" type="text" ng-model="ctrlInstall.conn.server" class="form-control" required ng-readonly="ctrlInstall.testOk == true">
+            <label for="bd">Base de datos:</label>
+            <input id="bd" type="text" ng-model="ctrlInstall.conn.db" class="form-control" required ng-readonly="ctrlInstall.testOk == true">
+            <label for="user">Usuario:</label>
+            <input id="user" type="text" ng-model="ctrlInstall.conn.user" class="form-control" required ng-readonly="ctrlInstall.testOk == true">                        
+            <label for="pass">Contraseña: </label>
+            <input id="pass" type="password" ng-model="ctrlInstall.conn.pass" class="form-control" required ng-readonly="ctrlInstall.testOk == true">                           
+        </form>
+    </div>                   
+</div>
+<div class="panel-footer">
+    <button class="btn btn-success" ng-click="ctrlInstall.checkConn()" ng-hide="ctrlInstall.testOk == true">Conectar</button>
+    <button class="btn btn-primary" ui-sref="step2" ng-hide="ctrlInstall.testOk == false">Siguiente</button>
+</div>

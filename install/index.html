@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instalación de appGestión</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">  
+        <script src="../js/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+        <script src="install.js"></script>
+    </head>
+    <body ng-app="installer">
+        <div class="container">
+            <h1 class="page-header">Instalación de appGestión</h1>
+            <div class="panel panel-success" ui-view="content" ng-controller="ctrlInstall as ctrlInstall">
+                
+            </div>
+            <footer class="navbar-fixed-bottom">
+                <p class="text-center">appGestion - Developed by Juan Manuel Roldán Rueda - 2016</p>
+            </footer>
+        </div>
+    </body>
+</html>
