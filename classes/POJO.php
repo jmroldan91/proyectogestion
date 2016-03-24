@@ -2,7 +2,7 @@
 
 class POJO {    
     function __construct($table, $params = []) {
-        $fields = Settings::$tableColums[$table];
+        $fields = Settings::$tableColums[$table];   
         if(count($params) > 0){            
             foreach($fields as $key => $value) {  
                 $this->$value = $params[$value];
@@ -15,7 +15,7 @@ class POJO {
     }
     public function __call($name, $value) {
         $op = substr($name, 0, 3);
-        $field = ucfirst(substr($name, 3));
+        $field = strtolower(substr($name, 3));
         if($op == 'set'){
             $this->$field = $value;
         }else if($op == 'get'){

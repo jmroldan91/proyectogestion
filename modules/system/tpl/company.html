@@ -1,0 +1,68 @@
+<form name="companyForm" class="form form-horizontal" ng-controller="companyController as companyCtrl" enctype='multipart/form-data'>
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Datos de la empresa</h3>
+        </div>
+        <div class="box-body">
+            <div class="col-lg-8 col-xs-12 col-lg-offset-2">
+            <div class="col-lg-12">
+                <label for="tradeName">Nombre comercial:</label>
+                <input type="text" id="tradeName" ng-model="companyCtrl.company.tradeName" class="form-control" ng-readonly="companyCtrl.enabledEdit===false">
+            </div>
+            <div class="col-lg-12">
+                <label for="CIF">CIF:</label>
+                <input type="text" id="CIF" ng-model="companyCtrl.company.CIF" class="form-control" ng-readonly="companyCtrl.enabledEdit===false">
+            </div>
+            <div class="col-lg-12">
+                <label for="address">Dirección:</label>        
+                <input type="text" class="form-control"  id="address" ng-model="companyCtrl.company.address" ng-readonly="companyCtrl.enabledEdit===false">
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <label for="city">Población:</label>
+                <input type="text" class="form-control" ng-model="companyCtrl.company.city" ng-readonly="companyCtrl.enabledEdit===false">
+                <label for="region">Provincia:</label>
+                <input type="text" class="form-control" ng-model="companyCtrl.company.region" ng-readonly="companyCtrl.enabledEdit===false">
+             </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <label for="country">País:</label>
+                <input type="text" class="form-control" ng-model="companyCtrl.company.country" ng-readonly="companyCtrl.enabledEdit===false">
+                <label for="postCode">Código postal:</label>
+                <input type="text" class="form-control" ng-model="companyCtrl.company.postCode" ng-readonly="companyCtrl.enabledEdit===false" >
+             </div>
+            <div class="col-lg-12">
+                <label for="email">Email:</label>
+                <input type="email" id="email" ng-model="companyCtrl.company.email" class="form-control" ng-readonly="companyCtrl.enabledEdit===false">
+            </div>
+            <div class="col-lg-12">
+                <label for="web">Web</label>
+                <input type="text" id="CIF" ng-model="companyCtrl.company.web" class="form-control" ng-readonly="companyCtrl.enabledEdit===false">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <label for="phone">Teléfono:</label>
+                <input type="text" id="phone" ng-model="companyCtrl.company.phone" class="form-control" ng-readonly="companyCtrl.enabledEdit===false">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <label for="fax">Fax</label>
+                <input type="text" id="phone" ng-model="companyCtrl.company.fax" class="form-control" ng-readonly="companyCtrl.enabledEdit===false">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <label for="mobile">Móvil:</label>
+                <input type="text" id="mobile" ng-model="companyCtrl.company.mobile" class="form-control" ng-readonly="companyCtrl.enabledEdit===false">
+            </div>     
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <label>Vista previa:</label><br>
+                <img class="img-responsive img-thumbnail" src="./img/logos/{{companyCtrl.company.logoUrl}}" alt="Logo no disponible">
+             </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <label for="logoUrl">Logo:</label>
+                <input id="logoUrl" name="file" type="file" class="form-control-static" ng-readonly="companyCtrl.enabledEdit===false">
+            </div>
+            </div>    
+        </div>
+        <div class="box-footer">
+            <button type="button" class="btn btn-primary" ng-hide="companyCtrl.CIF===''" ng-click="companyCtrl.enableEdit()">Modificar</button>
+            <button type="button" class="btn btn-success" ng-hide="companyCtrl.enabledEdit===false" ng-click="companyCtrl.setCompany()">Guardar</button>
+            <button type="button" class="btn btn-success" ng-hide="companyCtrl.CIF!==''" ng-click="companyCtrl.insertCompany()">Crear</button>
+        </div>
+    </div>  
+</form>

@@ -39,5 +39,11 @@
                         {"modules" : "id"},
                         {"menus" : "idModule,idMenu"},
                         {"roles" : "id"}
-                    ]    
+                    ],  
+    "navbarItems":  [
+                        {"name" : "Empresa", "link" : "company"},
+                        {"name" : "Módules", "link" : "modules"},
+                        {"name" : "Menús", "link" : "menus"},
+                        {"name" : "Roles", "link" : "roles"}                        
+                    ]
 }

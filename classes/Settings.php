@@ -57,6 +57,25 @@ class Settings {
         $strConstants = substr($strConstants, 0, -2) . "; }";
         Files::write('../classes/Constant.php', $strConstants);
     }
+    
+    static function loadSettings($path){
+        if(file_exists($path)){
+            $settings=  json_decode(file_get_contents($path), true);
+            self::$tableColums=$settings['tableColums'];
+            self::$tablePks=$settings['tablePks'];
+            self::$modules=$settings['modules'];
+            return 1;
+        }
+        return null;
+    }
+    
+    static function getTablePK($table){
+        foreach(self::$tablePks as $array){
+            if(isset($array[$table])){
+                return $array[$table];
+            }
+        }
+    }
 
     static function saveSettings($arrayConn = [], $arrayAdmin = []){        
         if(count($arrayConn) === 0 || count($arrayAdmin) === 0){

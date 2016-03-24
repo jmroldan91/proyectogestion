@@ -31,7 +31,7 @@ class Controller{
         }
         return new POJO($this->table);
     }    
-    function checkUser($table, $op){
+    function checkUser($table="", $op=""){
         if(!$this->session->isLogged()){
             echo '{ "loggedIn" : -1 }';
             exit();
@@ -61,7 +61,7 @@ class Controller{
     }
     function get(){
         $pkid = Request::req('pkid');
-        $obj = $this->mng->get(Settings::$tablePks[$this->table], $pkid);
+        $obj = $this->mng->get(Settings::getTablePK($this->table), $pkid);
         if($obj != null){
             echo '{ "result" : 1 , "resultset" : '.$obj->toJSON().' }';
         }else{
@@ -73,26 +73,32 @@ class Controller{
         $object = $this->getObject($this->table);
         $object->read();
         $r = $this->mng->insert($object);
-        echo '{ "result" : ' . $r . ', "obj" : '.$object->toJSON().' }';
+        echo '{ "result" : ' . $r . ', "obj" : '.$object->toJSON().', "error" : '.  json_encode($this->db->getQueryError()).' }';
     }    
     function set(){
         $this->checkUser();
         $object = $this->getObject($this->table);
         $object->read();
-        $r = $this->mng->set($object, Settings::$tablePks[$this->table], Request::req('pkid'));
+        $r = $this->mng->set($object, Settings::getTablePK($this->table), Request::req('pkid'));
         echo '{ "result" : ' . $r . ' }';
     }    
     function delete(){
         $this->checkUser();
-        $r = $this->mng->delete(Settings::$tablePks[$this->table], Request::req('pkid'));
+        $r = $this->mng->delete(Settings::getTablePK($this->table), Request::req('pkid'));
         echo '{ "result" : "' . $r .'"}';
     }
     function uploadFile(){
         $this->checkUser();
-        $file = $_FILES['image'];
-        $up = new UploadFile($file);
-        $r = $up->upload()->getError_message();
-        echo '{"result" : '.$r.', "filename" : "'.$up->getName().'.'.$up->getExt().'"}';
+        $file = $_FILES['file'];
+        $dir = Request::req('dir');        
+        /*$up = new UploadFile($file);
+        if($dir!=null){
+            $up->setDestination('img/'.$dir.'/');
+        }
+        $r = $up->getError_message();
+        echo '{"result" : '.$r.', "filename" : "'.$up->getDestination().'/'.$up->getName().'.'.$up->getExt().'"}';*/
+        $r = move_uploaded_file($file['tmp_name'], './img/'.$dir.'/'.$file['name']);
+        echo '{"result" : "'.$r.'"}';
     }    
     function render(){
         $head = new View('tpl/head.tpl');
@@ -102,5 +108,30 @@ class Controller{
         $data['scripts'] = $scripts->render();
         $view = new View('tpl/dashboard.tpl', $data);
         echo $view->render();
+    }
+    
+    function login(){
+        $login = Request::req('login');
+        $pass = Request::req('pass');
+        $mng = new ManagePOJO($this->db, 'user');
+        $user = $mng->get('login', $login);
+        if($user->getPass()===sha1($pass) && $user->getDisabled()==='0'){
+            $this->session->set('user', $user);            
+            echo '{"result":"ok", "user": '.$user->toJSON().', "modules": '.  json_encode(Settings::$modules).'}';
+        }else{
+            echo '{"result":"error"}';
+        }
+    }    
+    function logout(){
+        $this->session->destroy();
+        echo '{"result":"ok"}';
+    }
+    function checksession(){
+        $user = $this->session->get('user');
+        if($user!=null){          
+            echo '{"result":"ok", "user": '.$user->toJSON().', "modules": '.  json_encode(Settings::$modules).'}';
+        }else{
+            echo '{"result":"error"}';
+        }
     }
 }

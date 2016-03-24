@@ -19,7 +19,7 @@ class ManagePOJO {
         }else{
            $params[$pkname] = $id; 
         }        
-        return $this->db->update($this->table, $pojo->toArray(), $paramsWhere);
+        return $this->db->update($this->table, $pojo->toArray(), $params);
     }
     public function get($pkname, $id) {
         $params = [];
@@ -33,9 +33,8 @@ class ManagePOJO {
         $r = $this->db->query($this->table, '*', $params);
         if($r!=-1){
             $row = $this->db->getRow();
-            $object = new POJO($this->table);
-            $object->set($row);
-            return $entry;
+            $object = new POJO($this->table, $row);
+            return $object;
         }       
         return null;
     }
@@ -70,7 +69,7 @@ class ManagePOJO {
         $this->db->query($this->table, "*", $params, $order, $limit);
         $r = [];
         while($row=$this->db->getRow()){
-            $tmp = new POJO();
+            $tmp = new POJO($this->table);
             $tmp->set($row);
             $r[] = $tmp;
         }

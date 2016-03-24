@@ -5,10 +5,12 @@ CREATE TABLE IF NOT EXISTS company(
     city varchar(30),
     region varchar(30),
     country varchar(30),
+    postCode varchar(5),
     phone varchar(15),
     fax varchar(15),
     mobile varchar(15),
     email varchar(40),
+    web varchar(40),
     logoUrl varchar(40),
     PRIMARY KEY (CIF)
 )ENGINE=INNODB
@@ -38,11 +40,5 @@ CREATE TABLE IF NOT EXISTS roles(
     PRIMARY KEY (id)
 )ENGINE=INNODB
  DEFAULT CHARACTER SET=utf8;
-
 INSERT INTO roles VALUES(1, 'Admin');
-
-
-
-
-
 
